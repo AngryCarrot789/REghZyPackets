@@ -200,8 +200,7 @@ namespace REghZyPackets.Packeting.Ack {
 
         [BothSides]
         private bool OnPacketReceived(TPacket packet) {
-            Destination destination = packet.destination;
-            if (destination == Destination.Ack) {
+            if (packet.destination == Destination.Ack) {
                 uint key = packet.key;
                 if (this.usedKeys.HasKey(key)) {
                     if (!HandleRepeatIdempotency(packet)) {
@@ -217,7 +216,7 @@ namespace REghZyPackets.Packeting.Ack {
                     return false;
                 }
             }
-            else if (destination == Destination.ToClient) {
+            else if (packet.destination == Destination.ToClient) {
                 if (OnProcessPacketFromServer(packet)) {
                     this.isRequestUnderWay = false;
                     this.readCache[packet.key] = packet;
@@ -227,8 +226,11 @@ namespace REghZyPackets.Packeting.Ack {
                     return false;
                 }
             }
+            else if (packet.destination == Destination.ToServer) {
+                throw new Exception("PacketACK.ReadPayload() should have set the destination (or changed from ToServer) to Ack. This is a bug");
+            }
             else {
-                throw new Exception("Unexpected destination code: " + destination);
+                throw new Exception("Unexpected destination code: " + packet.destination);
             }
         }
 
@@ -253,10 +255,12 @@ namespace REghZyPackets.Packeting.Ack {
         /// <para>
         /// The default is to return <see cref="AllowDuplicatedKey"/>, which defaults to false
         /// </para>
+        /// <para>
+        /// This method could be used to implement a re-sent system; in the event the client doesn't 
+        /// receive a packet for some reason, this method could send it again. This functionality isn't built in
+        /// </para>
         /// </summary>
-        /// <param name="packet">
-        /// The packet (from the client) containing the repeated idempotency key
-        /// </param>
+        /// <param name="packet">The packet (from the client) containing the repeated idempotency key</param>
         /// <returns>
         /// Whether to continue handling the packet. If false, then stop processing the packet. Otherwise, process it.
         /// This method just specified what to actually do when a repeated key is received.
@@ -309,8 +313,8 @@ namespace REghZyPackets.Packeting.Ack {
         /// </para>
         /// <para>
         /// And if this returns <see langword="false"/>, then <see cref="ReceiveResponceAsync"/> will never return,
-        /// essentially meaning you completely ignore the packet (although listeners
-        /// that use <see cref="Priority.HIGHEST"/> will be able to sniff it)
+        /// essentially meaning you completely ignore the packet (although handlers registered before this 
+        /// AckProcessor's handler and use a priority higher than this one will be able to sniff it)
         /// </para>
         /// </summary>
         [ClientSide]

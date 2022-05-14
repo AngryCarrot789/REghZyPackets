@@ -24,7 +24,7 @@ namespace REghZyPackets.Packeting {
         /// </summary>
         public const ushort MaximumPayloadSize = short.MaxValue - MinimumHeaderSize;
 
-        public int PacketID => TypeToId[GetType()];
+        public int PacketID => GetPacketId(this.GetType());
 
         protected Packet() {
 
@@ -180,16 +180,12 @@ namespace REghZyPackets.Packeting {
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int GetPacketId<T>() {
+        public static int GetPacketId<T>() where T : Packet {
             return GetPacketId(typeof(T));
         }
 
         public static int GetPacketId(Type type) {
-            if (TypeToId.TryGetValue(type, out ushort id)) {
-                return id;
-            }
-
-            return -1;
+            return TypeToId.TryGetValue(type, out ushort id) ? id : -1;
         }
 
         /// <summary>
@@ -235,9 +231,9 @@ namespace REghZyPackets.Packeting {
         }
 
         static Packet() {
-            IdToType = new Dictionary<ushort, Type>();
-            TypeToId = new Dictionary<Type, ushort>();
-            IdToCreator = new Dictionary<ushort, Func<Packet>>();
+            Packet.IdToType = new Dictionary<ushort, Type>();
+            Packet.TypeToId = new Dictionary<Type, ushort>();
+            Packet.IdToCreator = new Dictionary<ushort, Func<Packet>>();
             Setup();
         }
 

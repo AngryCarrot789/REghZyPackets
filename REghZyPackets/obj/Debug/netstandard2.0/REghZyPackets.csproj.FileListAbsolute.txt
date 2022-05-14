@@ -13,7 +13,6 @@ F:\VSProjsV2\REghZyPackets\REghZyPackets\bin\Debug\netstandard2.0\REghZy.Streams
 F:\VSProjsV2\REghZyPackets\REghZyPackets\bin\Debug\netstandard2.0\REghZy.Streams.xml
 F:\VSProjsV2\REghZyPackets\REghZyPackets\bin\Debug\netstandard2.0\REghZy.Utils.pdb
 F:\VSProjsV2\REghZyPackets\REghZyPackets\bin\Debug\netstandard2.0\REghZy.Utils.xml
-F:\VSProjsV2\REghZyPackets\REghZyPackets\obj\Debug\netstandard2.0\REghZyPackets.csproj.AssemblyReference.cache
 F:\VSProjsV2\REghZyPackets\REghZyPackets\obj\Debug\netstandard2.0\REghZyPackets.GeneratedMSBuildEditorConfig.editorconfig
 F:\VSProjsV2\REghZyPackets\REghZyPackets\obj\Debug\netstandard2.0\REghZyPackets.AssemblyInfoInputs.cache
 F:\VSProjsV2\REghZyPackets\REghZyPackets\obj\Debug\netstandard2.0\REghZyPackets.AssemblyInfo.cs

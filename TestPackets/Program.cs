@@ -81,6 +81,8 @@ namespace TestPackets {
             catch (Exception e) {
                 Console.WriteLine(e);
             }
+
+            Console.Read();
         }
 
         private static void OnPacketReceived(IPacketSystem system, Packet packet, bool iscancelled) {
