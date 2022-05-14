@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\REghZyPackets\REghZyPackets.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="REghZy.Streams, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\REghZy\DLL\REghZy.Streams.dll</HintPath>
+      </Reference>
+      <Reference Include="REghZy.Utils, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\REghZy\DLL\REghZy.Utils.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

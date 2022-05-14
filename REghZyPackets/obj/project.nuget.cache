@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "R185KJ1EM38NiiMNEzJ3tmc8XUHw6JHFVKMKzJKF8OK4G+bMjKKWmeEXBicgvaDjI8v1rTjdpZSXZkWEMIUQDw==",
+  "success": true,
+  "projectFilePath": "F:\\VSProjsV2\\REghZyPackets\\REghZyPackets\\REghZyPackets.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kettl\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\kettl\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>REghZy.Utils</name>
+    </assembly>
+    <members>
+        <member name="M:REghZy.Utils.Arrays.Append``1(``0[],System.Int32,``0[],System.Int32,System.Int32)">
+            <summary>
+            Writes the given values into the given array, and returns the given array. If the given array isn't big enough,
+            it will be resized and a new copied instance will be returned
+            </summary>
+            <param name="array">The array to add, or to resize</param>
+            <param name="arrayOffset">The offset of where to start overwriting into the original array</param>
+            <param name="values">The values to add</param>
+            <param name="valuesOffset">The offset of where to start reading from in the values array</param>
+            <param name="count">The number of values to add to the array</param>
+            <typeparam name="T"></typeparam>
+            <returns>
+            The original 1st parameter array, or a new resized copy of it
+            </returns>
+        </member>
+        <member name="M:REghZy.Utils.Arrays.RemoveRange``1(``0[],System.Int32,System.Int32,``0[],System.Int32)">
+            <summary>
+            Removes a range of values from the given array, and passes the values within that range into the values array
+            </summary>
+            <param name="array">The array to remove values (won't be modified)</param>
+            <param name="index">The index of where to start removing from (inclusive)</param>
+            <param name="count">The number of bytes to remove</param>
+            <param name="values">The array containing the removed values (will be modified)</param>
+            <param name="valuesOffset">The index of where to start writing into the values array (inclusive)</param>
+            <typeparam name="T"></typeparam>
+            <returns>The original array but with the values removed</returns>
+        </member>
+        <member name="M:REghZy.Utils.Arrays.RemoveRange``1(``0[],System.Int32,System.Int32,``0[]@)">
+            <summary>
+            Removes a range of values from the given array, and passes the values within that range into the values array
+            </summary>
+            <param name="array">The array to remove values (won't be modified)</param>
+            <param name="index">The index of where to start removing from (inclusive)</param>
+            <param name="count">The number of bytes to remove</param>
+            <param name="values">An array of values that were removed from the original array</param>
+            <typeparam name="T"></typeparam>
+            <returns>
+            The original array passed as the first parameter
+            </returns>
+        </member>
+        <member name="M:REghZy.Utils.Arrays.RemoveBetween``1(``0[],System.Int32,System.Int32,``0[],System.Int32)">
+            <summary>
+            Removes a range of values from the given array between the given startIndex and endIndex
+            </summary>
+            <param name="array">The array to remove values (won't be modified)</param>
+            <param name="index">The index of where to start removing from (inclusive)</param>
+            <param name="endIndex">The endIndex (exclusive)</param>
+            <param name="values">The array containing the removed values (will be modified)</param>
+            <param name="valuesOffset">The index of where to start writing into the values array (inclusive)</param>
+            <typeparam name="T"></typeparam>
+            <returns>The original array but with the values removed</returns>
+        </member>
+        <member name="M:REghZy.Utils.Arrays.RemoveBetween``1(``0[],System.Int32,System.Int32,``0[]@)">
+            <summary>
+            Removes a range of values from the given array between the given startIndex and endIndex
+            </summary>
+            <param name="array">The array to remove values (won't be modified)</param>
+            <param name="index">The index of where to start removing from (inclusive)</param>
+            <param name="endIndex">The endIndex (exclusive)</param>
+            <param name="values">The array containing the removed values</param>
+            <typeparam name="T"></typeparam>
+            <returns>The original array but with the values removed</returns>
+        </member>
+        <member name="M:REghZy.Utils.Arrays.Fill``1(``0[],``0)">
+            <summary>
+            Fills an array with the given value
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.BlitUtils.LoadString(System.Char*,System.String)">
+            <summary>
+            Writes the given string to the given pointer
+            </summary>
+            <param name="ptr">A pointer to an array of characters</param>
+            <param name="value">The string to write into the given pointer (ensure the destination pointer is big enough!)</param>
+        </member>
+        <member name="M:REghZy.Utils.BlitUtils.CopyB64(System.Byte*,System.Byte*,System.UInt32)">
+            <summary>
+            Copies 'length' number of bytes, from the given source, to the given destination
+            <para>
+            This initially copies in blocks of 64 bytes, then blocks of 16, then the remaining bytes (less than 16) are copied individually
+            </para>
+            </summary>
+            <param name="dest">Source of the bytes to copy from</param>
+            <param name="src">Destination of the bytes to paste into</param>
+            <param name="length">The number of bytes to copy from src to dest</param>
+        </member>
+        <member name="M:REghZy.Utils.BlitUtils.CopyB256(System.Byte*,System.Byte*,System.UInt32)">
+            <summary>
+            Copies 'length' number of bytes, from the given source, to the given destination. This method
+            is intended for copying very large amounts of data, in the 1000s of bytes, for the reason below
+            <para>
+            This initially copies in blocks of 256 bytes, then blocks of 64, then blocks of 16, then the remaining bytes (less than 16) are copied individually
+            </para>
+            </summary>
+            <param name="dest">Source of the bytes to copy from</param>
+            <param name="src">Destination of the bytes to paste into</param>
+            <param name="length">The number of bytes to copy from src to dest</param>
+        </member>
+        <member name="M:REghZy.Utils.CollectionUtils.IsEmpty``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            A linq-based function, that checks if the given enumerable source is empty
+            <para>
+            It may not check every single element, because it will return false once any element satisfies the given predicate
+            </para>
+            <para>
+            This is equivalent to <code>source.Any(predicate)</code>, but i keep forgetting that method name, and i'm more used to java's isEmpty() method
+            </para>
+            </summary>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if the given enumerable source, or the predicate, are null</exception>
+        </member>
+        <member name="M:REghZy.Utils.ObjectUtils.CopyObj``1(``0)">
+            <summary>
+            Copies the given blittable type
+            </summary>
+            <typeparam name="T">The blittable type</typeparam>
+            <param name="value">The value to copy</param>
+            <returns>
+            A unique deep-clone (all bytes copied) of the given value
+            </returns>
+        </member>
+        <member name="T:REghZy.Utils.StringUtils">
+            <summary>
+            Helper methods for strings
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.JSubstring(System.String,System.Int32,System.Int32)">
+            <summary>
+            Java's substring, where you provide a start (inclusive) and end (exclusive) index
+            </summary>
+            <param name="value">The value to substring from</param>
+            <param name="startIndex">Index of the first character to substring (inclusive)</param>
+            <param name="endIndex">Index after the last character to substring (therefore, exclusive)</param>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.JSubstring(System.String,System.Int32)">
+            <summary>
+            Java's substring method. Simply calls <code>value.Substring(startIndex)</code>
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.Repeat(System.String,System.Int32)">
+            <summary>
+            Repeats the given string the given number of times, and returns a string of the repeated given string
+            </summary>
+            <param name="value">The string to repeat</param>
+            <param name="count">The number of times to repeat (and therefore the length of the return string, multiplied by the length of the given string)</param>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.Repeat(System.Char,System.Int32)">
+            <summary>
+            Repeats the given character the given number of times, and returns a string of the repeated characters
+            </summary>
+            <param name="character">The character to repeat</param>
+            <param name="count">The number of times to repeat (and therefore the length of the return string)</param>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.Extract(System.String,System.Int32,System.Int32)">
+            <summary>
+            Extracts a string between and at the given start and end index
+            <para>
+            Equivalent to <code>value.Substring(start, end - start - 1)</code>
+            </para>
+            </summary>
+            <param name="value">The value to substring from</param>
+            <param name="startIndex">First index in the string to extract from (inclusive)</param>
+            <param name="endIndex">Last index in the string to extract from (inclusive)</param>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.After(System.String,System.String,System.Int32)">
+            <summary>
+            Gets the remaining characters after the given value
+            </summary>
+            <param name="str">The string</param>
+            <param name="value">The value (exclusive)</param>
+            <param name="startIndex">The index to start searching at. 0 by default</param>
+            <returns>
+            Null if this string doesn't contain the given value(at or past the given start index).
+            Otherwise it returns the remaining characters after the given value
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If any argument is null</exception>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.Before(System.String,System.String,System.Int32)">
+            <summary>
+            Gets the characters leading up to the given value
+            </summary>
+            <param name="str">The string</param>
+            <param name="value">The value (exclusive)</param>
+            <param name="startIndex">The index to start searching at. 0 by default</param>
+            <returns>
+            Null if this string doesn't contain the given value (at or past the given start index).
+            Otherwise it returns the characters leading up to the given value
+            </returns>
+            <exception cref="T:System.ArgumentNullException">If any argument is null</exception>
+        </member>
+        <member name="M:REghZy.Utils.StringUtils.Between(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Returns the characters between the first occourance of the given 2 values; a and b
+            </summary>
+            <param name="str">The string</param>
+            <param name="a">Between this... (exclusive)</param>
+            <param name="b">and this (exclusive)</param>
+            <param name="startIndex">The index to start searching at. 0 by default</param>
+            <returns>
+            Null if this string doesn't contain a or b (at or past the given start index)
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="F:REghZy.Utils.Time.TICK_PER_SECOND">
+            <summary>
+            This specifies how many ticks there are in 1 second. This usually never changes during
+            the app's runtime. Though, it might change for different operating systems
+            <para>
+            If one were to call <see cref="M:REghZy.Utils.Time.GetSystemTicks"/>, then <see cref="M:System.Threading.Thread.Sleep(System.Int32)"/>
+            for 1000ms, then <see cref="M:REghZy.Utils.Time.GetSystemTicks"/>, the interval will roughly equal to this field's value
+            </para>
+            </summary>
+        </member>
+        <member name="F:REghZy.Utils.Time.TICK_PER_MILLIS">
+            <summary>
+            A multiplier for converting ticks to milliseconds
+            <para>
+            If one were to call <see cref="M:REghZy.Utils.Time.GetSystemMillis"/>, then <see cref="M:System.Threading.Thread.Sleep(System.Int32)"/>
+            for 1000ms, then <see cref="M:REghZy.Utils.Time.GetSystemMillis"/>, the interval will roughly equal to 1,000
+            </para>
+            </summary>
+        </member>
+        <member name="F:REghZy.Utils.Time.TICK_PER_MILLIS_D">
+            <summary>
+            A multiplier for converting ticks to milliseconds
+            <para>
+            If one were to call <see cref="M:REghZy.Utils.Time.GetSystemMillis"/>, then <see cref="M:System.Threading.Thread.Sleep(System.Int32)"/>
+            for 1000ms, then <see cref="M:REghZy.Utils.Time.GetSystemMillis"/>, the interval will roughly equal to 1,000
+            </para>
+            </summary>
+        </member>
+        <member name="F:REghZy.Utils.Time.TICK_PER_NANOS">
+            <summary>
+            A multiplier for converting ticks to milliseconds
+            <para>
+            If one were to call <see cref="M:REghZy.Utils.Time.GetSystemNanos"/>, then <see cref="M:System.Threading.Thread.Sleep(System.Int32)"/>
+            for 1000ms, then <see cref="M:REghZy.Utils.Time.GetSystemNanos"/>, the interval will roughly equal to 1,000,000
+            </para>
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.Time.GetSystemTicks">
+            <summary>
+            Gets the system's performance counter ticks
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.Time.GetSystemNanos">
+            <summary>
+            Gets the system's performance counter ticks and converts them to nanoseconds
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.Time.GetSystemMillis">
+            <summary>
+            Gets the system's performance counter ticks and converts them to milliseconds
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.Time.GetSystemMillisD">
+            <summary>
+            Gets the system's performance counter ticks and converts them to milliseconds, as a double instead
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.Time.GetSystemSeconds">
+            <summary>
+            Gets the system's performance counter ticks and converts them to seconds
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:REghZy.Utils.Time.GetSystemSecondsD">
+            <summary>
+            Gets the system's performance counter ticks and converts them to decimal seconds
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:REghZy.Utils.Time.SleepFor(System.Double)">
+            <summary>
+            Precision thread sleep timing
+            <para>
+            This should, in most cases, guarantee the exact amount of time wanted, but it depends how tolerant <see cref="M:System.Threading.Thread.Sleep(System.Int32)"/> is
+            </para>
+            </summary>
+            <param name="delay">The exact number of milliseconds to sleep for</param>
+        </member>
+        <member name="M:REghZy.Utils.Time.SleepFor(System.Int64)">
+            <summary>
+            Precision thread sleep timing
+            <para>
+            This should, in most cases, guarantee the exact amount of time wanted, but it depends how tolerant <see cref="M:System.Threading.Thread.Sleep(System.Int32)"/> is
+            </para>
+            </summary>
+            <param name="delay">The exact number of milliseconds to sleep for</param>
+        </member>
+        <member name="T:REghZy.Utils.XmlUserSettings`1">
+            <summary>
+            A class which uses an XML serialiser to help with saving/loading user settings
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:REghZy.Utils.XmlUserSettings`1.Destination">
+            <summary>
+            The path to use
+            </summary>
+        </member>
+        <member name="M:REghZy.Utils.XmlUserSettings`1.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the XML user settings serialiser
+            </summary>
+            <param name="fileName">
+            The name of the file, which will be placed in C:/users/_user_/MyDocuments/REghZY
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if the properties instance is null, or the file name is null or empty
+            </exception>
+        </member>
+        <member name="M:REghZy.Utils.XmlUserSettings`1.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of the XML user settings serialiser
+            </summary>
+            <param name="folder">
+            The name of the folder in which the file will be in (in MyDocuments)
+            </param>
+            <param name="fileName">
+            The name of the file, which will be placed in C:/users/_user_/MyDocuments/REghZY
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if the properties instance is null, or the file name is null or empty
+            </exception>
+        </member>
+        <member name="M:REghZy.Utils.XmlUserSettings`1.Save(`0)">
+            <summary>
+            Saves the given instance to the file
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:REghZy.Utils.XmlUserSettings`1.Load">
+            <summary>
+            Loads an instance from the file
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

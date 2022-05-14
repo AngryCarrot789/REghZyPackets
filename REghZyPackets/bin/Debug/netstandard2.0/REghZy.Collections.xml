@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>REghZy.Collections</name>
+    </assembly>
+    <members>
+        <member name="T:REghZy.Collections.Dictionaries.LKDEntry`1">
+            <summary>
+            An entry for the long-key dictionary
+            </summary>
+            <typeparam name="V">Value type</typeparam>
+        </member>
+        <member name="T:REghZy.Collections.Dictionaries.LongKeyDictionary`1">
+            <summary>
+            A dictionary that uses a long as a key, while also removing all possibilities of hash collision
+            </summary>
+            <typeparam name="V">The type of value this map contains</typeparam>
+        </member>
+        <member name="P:REghZy.Collections.Dictionaries.LongKeyDictionary`1.Count">
+            <summary>
+            Returns the number of elements in this dictionary
+            </summary>
+        </member>
+        <member name="P:REghZy.Collections.Dictionaries.LongKeyDictionary`1.Item(System.Int64)">
+            <summary>
+            Gets or sets the value for the given key
+            </summary>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">
+            The key was not found while getting a value
+            </exception>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.#ctor">
+            <summary>
+            Creates a new long-key dictionary
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.PairToHash(System.Int32,System.Int32)">
+            <summary>
+            Efficiently hashes a MSW and LSW
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.HashToMSW(System.Int64)">
+            <summary>
+            Converts a hash (see <see cref="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.PairToHash(System.Int32,System.Int32)"/>) to the most significant word; high 4 bytes
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.HashToLSW(System.Int64)">
+            <summary>
+            Converts a hash (see <see cref="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.PairToHash(System.Int32,System.Int32)"/>) to the least significant word; lower 4 bytes
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.IsEmpty">
+            <summary>
+            Whether this dictionary is empty or not
+            </summary>
+            <returns>
+            True if there are 0 elements, otherwise false
+            </returns>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.ContainsKey(System.Int64)">
+            <summary>
+            Checks if this dictionary contains the given key
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.Clear">
+            <summary>
+            Clears this dictionary
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.TryGet(System.Int64,`0@)">
+            <summary>
+            Attempts to get a value with the given key
+            </summary>
+            <returns>
+            True if an entry was found, where the value parameter will contain it. False if the key was not found
+            </returns>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.Get(System.Int64)">
+            <summary>
+            Gets the value with the given key
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">
+            The dictionary did not contain the key, or the dictionary is empty
+            </exception>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.Put(System.Int64,`0)">
+            <summary>
+            Puts the given value with the given key
+            </summary>
+            <returns>
+            True if an old value was replaced; false if a new entry was added
+            </returns>
+        </member>
+        <member name="M:REghZy.Collections.Dictionaries.LongKeyDictionary`1.Remove(System.Int64)">
+            <summary>
+            Removes an entry with the given key
+            </summary>
+            <returns>
+            True if something was removed. False if nothing was removed; key was not contained
+            </returns>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.BaseMultiMap`2.GetOrCreate(`0)">
+            <summary>
+            A method that gets, or creates, a value collection for the given key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:REghZy.Collections.Multimaps.IMultiMap`2.Keys">
+            <summary>
+            Returns a collection of keys that this multimap contains
+            </summary>
+        </member>
+        <member name="P:REghZy.Collections.Multimaps.IMultiMap`2.Values">
+            <summary>
+            Returns a collection of collections that this multimap contains
+            </summary>
+        </member>
+        <member name="P:REghZy.Collections.Multimaps.IMultiMap`2.Item(`0)">
+            <summary>
+            Returns a collection of values for the given key
+            </summary>
+            <param name="key">The key</param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The multimap does not contain the key</exception>
+        </member>
+        <member name="P:REghZy.Collections.Multimaps.IMultiMap`2.Count">
+            <summary>
+            Returns the size of this multimap (aka the number of keys)
+            </summary>
+        </member>
+        <member name="P:REghZy.Collections.Multimaps.IMultiMap`2.IsEmpty">
+            <summary>
+            Indicates whether this multimap is empty or not. This is equivalent to
+            <code>
+            this.Count == 0
+            </code>
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Get(`0)">
+            <summary>
+            Returns a collection of values for the given key
+            <para>
+            This is a normal method equivalent to <see cref="P:REghZy.Collections.Multimaps.IMultiMap`2.Item(`0)"/>
+            </para>
+            </summary>
+            <param name="key">The key</param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The multimap does not contain the key</exception>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Put(`0,`1)">
+            <summary>
+            Adds a value for the given key
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.PutAll(`0,System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            Adds all of the values for the given key
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.PutAll(REghZy.Collections.Multimaps.IMultiMap{`0,`1})">
+            <summary>
+            Adds all of the keys and their values from the given multimap to this multimap
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.RemoveAll(`0)">
+            <summary>
+            Removes all of the values for the given key (and removes the key)
+            </summary>
+            <returns>
+            The values that were removed
+            </returns>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Remove(`0,`1)">
+            <summary>
+            Removes the value for the given key
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Contains(`0,`1)">
+            <summary>
+            Returns whether the given value is contained in this multimap for the given key
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.ContainsKey(`0)">
+            <summary>
+            Returns whether the given key is contained in this multimap
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.ContainsValue(`1)">
+            <summary>
+            Returns whether this multimap contains any trace of the given value, in any key
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Size">
+            <summary>
+            The size of this multimap. This is the exact same as <see cref="P:REghZy.Collections.Multimaps.IMultiMap`2.Count"/>
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Size(`0)">
+            <summary>
+            Returns the number of values there are for the given key, or 0 if the key doesn't exist
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.Clear">
+            <summary>
+            Clears this map. This will not clear any underlying collections, meaning they will be left open for garbage collection
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.IMultiMap`2.ToMap">
+            <summary>
+            Converts this multimap into a dictionary. The dictionary will not affect this multimap in any way
+            </summary>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.LinkedListMutlimap`2.RemoveLast(`0)">
+            <summary>
+            Removes the last value from the linked list for the give key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:REghZy.Collections.Multimaps.LinkedListMutlimap`2.RemoveFirst(`0)">
+            <summary>
+            Removes the first value from the linked list for the give key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

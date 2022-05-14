@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "LaJQjLhl5iCBQ/QJJ6V6cg0OKM/DLeXvQK/nZ+i1NB2sX62p0EcAYcBRcOg2vEHcLWJOdTc/ChGn6h6DDm7tng==",
+  "success": true,
+  "projectFilePath": "F:\\VSProjsV2\\REghZyPackets\\TestPackets\\TestPackets.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kettl\\.nuget\\packages\\system.io.ports\\4.7.0\\system.io.ports.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

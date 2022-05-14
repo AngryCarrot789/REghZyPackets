@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>REghZy.MathsF</name>
+    </assembly>
+    <members>
+        <member name="T:REghZy.MathsF.Matrix4">
+             <summary>
+             A 4x4 float matrix, in row-major order
+             <code>
+                  _____________________
+                  |  __X___Y___Z___W__|
+                  |X| M00 M01 M02 M03 |
+             Rows |Y| M10 M11 M12 M13 |
+                  |Z| M20 M21 M22 M23 |
+                  |W| M30 M31 M32 M33 |
+                  |_|____ Columns ____|
+            
+            
+             Column content goes down, Row content goes right
+             </code>
+             </summary>
+        </member>
+        <member name="F:REghZy.MathsF.Matrix4.M00">
+            <summary>
+            The first element in the matrix. This can be pointed to via pointers in order to use the matrix like a row-major array
+            </summary>
+        </member>
+        <member name="P:REghZy.MathsF.Matrix4.Transposed">
+            <summary>
+            Returns a matrix where the entire matrix is flipped along the diagonal
+            </summary>
+        </member>
+        <member name="P:REghZy.MathsF.Matrix4.Item(System.Int32)">
+            <summary>
+            Gets or sets a specific element at the given index. This is row-major
+            </summary>
+            <param name="index">The index (0-15)</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The index is below 0 or above 15</exception>
+        </member>
+        <member name="P:REghZy.MathsF.Matrix4.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets or sets an element intersecting the specific row and column indexes
+            </summary>
+            <param name="row">The row (top to bottom)</param>
+            <param name="column">The column (left to right)</param>
+        </member>
+        <member name="M:REghZy.MathsF.Matrix4.Orthographic(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Orthographic matrix
+            </summary>
+            <param name="l">Left</param>
+            <param name="t">Top</param>
+            <param name="r">Right</param>
+            <param name="b">Bottom</param>
+            <param name="n">Near</param>
+            <param name="f">Far</param>
+        </member>
+        <member name="M:REghZy.MathsF.Matrix4.Pointer(REghZy.MathsF.Matrix4.PtrCallback)">
+            <summary>
+            A helper for accessing a pointer to the first element
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:REghzy.MathsF.Quaternion.Slerp(REghzy.MathsF.Quaternion,REghzy.MathsF.Quaternion,System.Single)">
+            <summary>
+            Interpolates between two quaternions, using spherical linear interpolation.
+            </summary>
+            <param name="quaternion1">The first source Quaternion.</param>
+            <param name="quaternion2">The second source Quaternion.</param>
+            <param name="amount">The relative weight of the second source Quaternion in the interpolation.</param>
+            <returns>The interpolated Quaternion.</returns>
+        </member>
+        <member name="M:REghzy.MathsF.Quaternion.Lerp(REghzy.MathsF.Quaternion,REghzy.MathsF.Quaternion,System.Single)">
+            <summary>
+             Linearly interpolates between two quaternions.
+            </summary>
+            <param name="a">The first source Quaternion.</param>
+            <param name="b">The second source Quaternion.</param>
+            <param name="amount">The relative weight of the second source Quaternion in the interpolation.</param>
+            <returns>The interpolated Quaternion.</returns>
+        </member>
+    </members>
+</doc>
