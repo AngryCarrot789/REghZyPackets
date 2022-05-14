@@ -1,6 +1,9 @@
+using System;
 using System.IO.Ports;
 using REghZy.Streams;
+using REghZyPackets.Exceptions;
 using REghZyPackets.Networking;
+using REghZyPackets.Utils;
 
 namespace REghZyPackets.Serial {
     public class SerialConnection : NetworkConnection {
@@ -83,6 +86,8 @@ namespace REghZyPackets.Serial {
         // }
 
         public override void Connect() {
+            AssertionUtils.ensureNotDisposed(this.isDisposed);
+            AssertionUtils.ensureConnectionState(this.IsConnected, false);
             this.port.Open();
             this.port.DtrEnable = true;
             this.stream = this.UseLittleEndianness ? SerialDataStream.LittleEndianness(this.port) : SerialDataStream.BigEndianness(this.port);
@@ -90,6 +95,8 @@ namespace REghZyPackets.Serial {
         }
 
         public override void Disconnect() {
+            AssertionUtils.ensureNotDisposed(this.isDisposed);
+            AssertionUtils.ensureConnectionState(this.IsConnected, true);
             this.stream = null;
             this.port.DtrEnable = false;
             ClearBuffers();

@@ -1,6 +1,7 @@
 using System;
 using REghZy.Streams;
 using REghZyPackets.Networking;
+using REghZyPackets.Utils;
 
 namespace REghZyPackets.Memory.Networking {
     /// <summary>
@@ -22,19 +23,15 @@ namespace REghZyPackets.Memory.Networking {
         }
 
         public override void Connect() {
-            if (this.isConnected) {
-                throw new Exception("Already connected");
-            }
-
+            AssertionUtils.ensureNotDisposed(this.isDisposed);
+            AssertionUtils.ensureConnectionState(this.IsConnected, false);
             this.stream = new SimpleDataStream(this.useA ? this.pair.StreamA : this.pair.StreamB);
             this.isConnected = true;
         }
 
         public override void Disconnect() {
-            if (!this.isConnected) {
-                throw new Exception("Not connected");
-            }
-
+            AssertionUtils.ensureNotDisposed(this.isDisposed);
+            AssertionUtils.ensureConnectionState(this.IsConnected, true);
             this.stream = null;
             this.isConnected = false;
         }

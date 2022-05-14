@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using REghZyPackets.Memory;
 using REghZyPackets.Packeting;
 using REghZyPackets.Systems;

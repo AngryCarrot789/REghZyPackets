@@ -133,14 +133,6 @@
             "fileVersion": "1.0.0.0"
           }
         }
-      },
-      "REghZy.Utils/1.0.0.0": {
-        "runtime": {
-          "REghZy.Utils.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -268,11 +260,6 @@
       "sha512": ""
     },
     "REghZy.Streams/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "REghZy.Utils/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

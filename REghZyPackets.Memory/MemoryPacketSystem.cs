@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using REghZy.Streams;
 using REghZyPackets.Exceptions;
 using REghZyPackets.Memory.Networking;
@@ -35,12 +36,18 @@ namespace REghZyPackets.Memory {
 
         public bool IsConnected => true;
 
-        public MemoryPacketSystem() {
+        public MemoryPacketSystem(bool useBigEndianness = true) {
             this.Handlers = new HandlerMap(this);
             this.Connection = new EmptyConnection();
             this.stream = new MemoryStream(256);
-            this.input = new DataInputStream(this.stream);
-            this.output = new DataOutputStream(this.stream);
+            if (useBigEndianness) {
+                this.input = new DataInputStream(this.stream);
+                this.output = new DataOutputStream(this.stream);
+            }
+            else {
+                this.input = new DataInputStreamLE(this.stream);
+                this.output = new DataOutputStreamLE(this.stream);
+            }
         }
 
         /// <summary>
